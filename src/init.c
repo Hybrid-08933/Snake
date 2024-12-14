@@ -5,6 +5,7 @@
 #include "defs.h"
 #include "init.h"
 #include "structs.h"
+#include "snake.h"
 
 void init_SDL(void) {
     int renderer_flags, window_flags;
@@ -18,7 +19,7 @@ void init_SDL(void) {
         exit(1);
     }
 
-    app.window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, window_flags);
+    app.window = SDL_CreateWindow("Snake", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, window_flags);
 
     if (!app.window) {
         printf("Failed to open %dx%d window: %s\n", SCREEN_WIDTH, SCREEN_HEIGHT, SDL_GetError());
@@ -33,4 +34,6 @@ void init_SDL(void) {
         printf("Failed to create renderer: %s\n", SDL_GetError());
         exit(1);
     }
+
+    snake_initialize();
 }
