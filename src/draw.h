@@ -5,4 +5,6 @@ void prepare_scene(void);
 
 void present_scene(void);
 
+void snake_draw(void);
+
 #endif

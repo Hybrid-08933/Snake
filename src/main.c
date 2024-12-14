@@ -5,6 +5,7 @@
 #include "init.h"
 #include "draw.h"
 #include "input.h"
+#include "snake.h"
 #include "main.h"
 
 App app;
@@ -19,11 +20,19 @@ int main(int argc, char *argv[]) {
     while(1) {
         prepare_scene();
 
-        process_input();
+        snake_draw();
+
+        snake_move();
+
+        snake_body_redir();
 
         present_scene();
 
-        SDL_Delay(16);
+        snake_collision();
+
+        process_input();
+
+        SDL_Delay(144);
     }
 
     return 0;
