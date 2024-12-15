@@ -4,7 +4,8 @@
 
 #include "defs.h"
 #include "structs.h"
-#include "snake.h"
+#include "food.h"
+#include "snake_utils.h"
 
 void snake_initialize(void) {
     app.head = (Snake_Head*) malloc(sizeof(Snake_Head));
@@ -12,8 +13,8 @@ void snake_initialize(void) {
     // Head
     app.head->body = (Snake_Body*) malloc(sizeof(Snake_Body));
     app.head->dir = SNAKE_DIR_RIGHT;
-    app.head->pos_x = SCREEN_WIDTH / 2;
-    app.head->pos_y = SCREEN_HEIGHT / 2;
+    app.head->pos_x = (SCREEN_WIDTH / SNAKE_SIZE) / 2;
+    app.head->pos_y = (SCREEN_HEIGHT / SNAKE_SIZE) / 2;
 
     // Body
     app.head->body->dir = SNAKE_DIR_RIGHT;
@@ -128,6 +129,11 @@ void snake_grow(void) {
 
 void snake_collision(void) {
     int_fast16_t head_x, head_y;
+
+    if (((app.head->pos_x + SNAKE_SIZE) >= app.food_x && app.head->pos_x <= (app.food_x + SNAKE_SIZE)) && ((app.head->pos_y + SNAKE_SIZE) >= app.food_y && app.head->pos_y <= (app.food_y + SNAKE_SIZE))) {
+        snake_grow();
+        spawn_food();
+    }
 
     switch (app.head->dir) {
         case SNAKE_DIR_RIGHT:

@@ -3,7 +3,7 @@
 
 #include "input.h"
 #include "structs.h"
-#include "snake.h"
+#include "snake_utils.h"
 
 void process_input(void) {
     SDL_Event event;

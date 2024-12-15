@@ -27,6 +27,7 @@ typedef struct {
     SDL_Renderer *renderer;
     SDL_Window *window;
     Snake_Head *head;
+    int_fast16_t food_x, food_y;
 } App;
 
 extern App app;

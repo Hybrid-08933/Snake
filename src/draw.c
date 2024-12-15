@@ -38,3 +38,16 @@ void snake_draw(void) {
         SDL_RenderFillRect(app.renderer, &rect);
     }
 }
+
+void food_draw(void) {
+    Uint8 r = FOOD_RED_COMPONENT, g = FOOD_GREEN_COMPONENT, b = FOOD_BLUE_COMPONENT, a = BACKGROUND_ALPHA_COMPONENT;
+    SDL_Rect rect = {
+        .x = app.food_x,
+        .y = app.food_y,
+        .w = SNAKE_SIZE,
+        .h = SNAKE_SIZE
+    };
+
+    SDL_SetRenderDrawColor(app.renderer, r, g, b, a);
+    SDL_RenderFillRect(app.renderer, &rect);
+}

@@ -5,7 +5,7 @@
 #include "init.h"
 #include "draw.h"
 #include "input.h"
-#include "snake.h"
+#include "snake_utils.h"
 #include "main.h"
 
 App app;
@@ -20,15 +20,13 @@ int main(int argc, char *argv[]) {
     while(1) {
         prepare_scene();
 
+        food_draw();
         snake_draw();
-
         snake_move();
-
+        snake_collision();
         snake_body_redir();
 
         present_scene();
-
-        snake_collision();
 
         process_input();
 
