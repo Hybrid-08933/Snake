@@ -1,5 +1,5 @@
-#ifndef SNAKE_H
-#define SNAKE_H
+#ifndef SNAKE_UTILS_H
+#define SNAKE_UTILS_H
 
 void snake_initialize(void);
 

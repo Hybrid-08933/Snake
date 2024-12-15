@@ -7,4 +7,6 @@ void present_scene(void);
 
 void snake_draw(void);
 
+void food_draw(void);
+
 #endif

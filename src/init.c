@@ -3,9 +3,10 @@
 #include <stdlib.h>
 
 #include "defs.h"
-#include "init.h"
 #include "structs.h"
-#include "snake.h"
+#include "snake_utils.h"
+#include "food.h"
+#include "init.h"
 
 void init_SDL(void) {
     int renderer_flags, window_flags;
@@ -36,4 +37,5 @@ void init_SDL(void) {
     }
 
     snake_initialize();
+    spawn_food();
 }

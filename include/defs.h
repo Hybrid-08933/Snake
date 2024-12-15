@@ -2,9 +2,7 @@
 #define DEFS_H
 
 #define SCREEN_WIDTH    (1280U)
-#define SCREEN_HEIGHT   (720U)
-//#define TITLE_BAR       (59U)
-//#define SIDE_BAR        (38U)
+#define SCREEN_HEIGHT   (736U)
 
 #define BACKGROUND_RED_COMPONENT    (0x0C)
 #define BACKGROUND_GREEN_COMPONENT  (0x04)
@@ -20,5 +18,9 @@
 #define SNAKE_BODY_RED_COMPONENT    (0xF8)
 #define SNAKE_BODY_GREEN_COMPONENT  (0xF8)
 #define SNAKE_BODY_BLUE_COMPONENT   (0xFF)
+
+#define FOOD_RED_COMPONENT      (0xF0)
+#define FOOD_GREEN_COMPONENT    (0x80)
+#define FOOD_BLUE_COMPONENT     (0x80)
 
 #endif
