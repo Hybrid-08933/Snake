@@ -8,6 +8,8 @@
 #include "snake_utils.h"
 
 void snake_initialize(void) {
+    #if LINKED_LIST
+
     app.head = (Snake_Head*) malloc(sizeof(Snake_Head));
 
     // Head
@@ -21,9 +23,22 @@ void snake_initialize(void) {
     app.head->body->pos_x = app.head->pos_x - SNAKE_SIZE;
     app.head->body->pos_y = app.head->pos_y;
     app.head->body->next = NULL;
+
+    #elif TILE_SET
+
+    for (int i = 0; i < SCREEN_WIDTH; i++) {
+        for (int j = 0; j < SCREEN_HEIGHT; j++) {
+            app.snake[i][j] = SNAKE_NOTHING;
+        }
+    }
+
+    app.snake[22][40] = SNAKE_HEAD_RIGHT;
+    app.snake[22][39] = SNAKE_BODY;
+    #endif
 }
 
 void snake_move(void) {
+    #if LINKED_LIST
 
     switch (app.head->dir) {
         case SNAKE_DIR_RIGHT:
@@ -84,6 +99,72 @@ void snake_move(void) {
             break;
         }
     }
+
+    #elif TILE_SET
+    bool reached_tail = false;
+    Snake dir = app.snake[app.head_x][app.head_y];
+    uint8_t i = app.head_x, j = app.head_y;
+
+    switch (dir) {
+        case SNAKE_HEAD_RIGHT:
+            if (app.head_x + 1 > 80) {
+                app.head_x = 0;
+            } else {
+                app.head_x++;
+            }
+
+            break;
+        
+        case SNAKE_HEAD_UP:
+            if (app.head_y - 1 < 0) {
+                app.head_y = 45;
+            } else {
+                app.head_y--;
+            }
+
+            break;
+        
+        case SNAKE_HEAD_LEFT:
+            if (app.head_x - 1 < 0) {
+                app.head_x = 80
+            } else {
+                app.head_x--;
+            }
+
+            break;
+        
+        case SNAKE_HEAD_DOWN:
+            if (app.head_y + 1 > 45) {
+                app.head_y = 0;
+            } else {
+                app.head_y++;
+            }
+
+            break;
+        
+        default:
+            break;
+    }
+
+    app.snake[app.head_x][app.head_y] = dir;
+
+    while (!reached_tail) {
+        switch (dir) {
+            case SNAKE_HEAD_RIGHT:
+                for ( ; app.snake[i][j] != SNAKE_NOTHING ; i--) {
+                    app.snake[i][j] = SNAKE_BODY;
+                }
+
+                i++;
+
+                if (app.snake[i][j - 1] == SNAKE_BODY) {
+                    dir = SNAKE_HEAD_UP;
+                    
+                } else if (app.snake)
+        }
+    }
+
+    #endif
 }
 
 void snake_body_redir(void) {

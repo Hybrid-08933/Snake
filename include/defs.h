@@ -2,7 +2,7 @@
 #define DEFS_H
 
 #define SCREEN_WIDTH    (1280U)
-#define SCREEN_HEIGHT   (736U)
+#define SCREEN_HEIGHT   (720U)
 
 #define BACKGROUND_RED_COMPONENT    (0x0C)
 #define BACKGROUND_GREEN_COMPONENT  (0x04)
@@ -22,5 +22,8 @@
 #define FOOD_RED_COMPONENT      (0xF0)
 #define FOOD_GREEN_COMPONENT    (0x80)
 #define FOOD_BLUE_COMPONENT     (0x80)
+
+#define TILE_SET    1
+#define LINKED_LIST 0
 
 #endif
